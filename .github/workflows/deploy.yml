@@ -67,7 +67,6 @@ permissions:
 
 env:
   NODE_VERSION: '24'
-  PNPM_VERSION: '10.28.0'
   SFCC_LOG_LEVEL: ${{ vars.SFCC_LOG_LEVEL }}
 
 jobs:
@@ -96,7 +95,6 @@ jobs:
         uses: './.github/actions/build-bundle'
         with:
           node-version: ${{ env.NODE_VERSION }}
-          pnpm-version: ${{ env.PNPM_VERSION }}
 
       - name: Push to MRT
         if: steps.config.outputs.skip != 'true'
@@ -140,7 +138,6 @@ jobs:
         uses: './.github/actions/build-bundle'
         with:
           node-version: ${{ env.NODE_VERSION }}
-          pnpm-version: ${{ env.PNPM_VERSION }}
 
       - name: Generate code version
         if: steps.config.outputs.skip != 'true'

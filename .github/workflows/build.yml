@@ -13,7 +13,6 @@ on:
 
 env:
   NODE_VERSION: '24'
-  PNPM_VERSION: '10.28.0'
 
 jobs:
   build:
@@ -33,4 +32,3 @@ jobs:
         uses: './.github/actions/build-bundle'
         with:
           node-version: ${{ env.NODE_VERSION }}
-          pnpm-version: ${{ env.PNPM_VERSION }}
