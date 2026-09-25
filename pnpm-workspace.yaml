@@ -38,16 +38,3 @@ trustPolicy: no-downgrade
 trustPolicyExclude:
   - 'chokidar@4.0.3'          # Lost SLSA provenance in 4.0.2+; dep of @react-router/dev
   - 'semver@6.3.1 || 5.7.2'   # Lost provenance; dep of eslint-plugin-import, lighthouse
-
-allowBuilds:
-  '@parcel/watcher': set this to true or false
-  '@swc/core': set this to true or false
-  '@tailwindcss/oxide': set this to true or false
-  core-js: set this to true or false
-  detox: set this to true or false
-  dtrace-provider: set this to true or false
-  esbuild: set this to true or false
-  msw: set this to true or false
-  protobufjs: set this to true or false
-  unrs-resolver: set this to true or false
-  yarn: set this to true or false
