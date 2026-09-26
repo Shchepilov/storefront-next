@@ -4,20 +4,27 @@ services:
     runtime: docker
     dockerfilePath: ./Dockerfile
     plan: free
-    healthCheckPath: /
     envVars:
       # Render injects PORT; the Dockerfile passes it to `sfnext preview`.
       - key: NODE_ENV
         value: production
-      # B2C Commerce API credentials. These are the public zzrf-041 demo
-      # values from .env.default — replace them with your own instance.
+
+      # --- B2C Commerce API credentials -----------------------------------
+      # `sfnext preview` does not read .env files, so these must exist in the
+      # process environment or config.server.ts validation fails at startup
+      # with "Missing clientId in config.server.ts commerce.api configuration".
+      #
+      # Values below are the public zzrf-041 demo backend from .env.default.
+      # Replace them with your own instance before doing anything real.
       - key: PUBLIC__app__commerce__api__clientId
-        sync: false
+        value: b7e5e42d-7169-4325-8c52-e142142a821c
       - key: PUBLIC__app__commerce__api__organizationId
-        sync: false
+        value: f_ecom_zzrf_041
       - key: PUBLIC__app__commerce__api__shortCode
-        sync: false
+        value: 8o7m175y
+
+      # --- Site context ----------------------------------------------------
       - key: PUBLIC__app__defaultSiteId
-        sync: false
+        value: MarketStreet
       - key: PUBLIC__app__commerce__sites
-        sync: false
+        value: '[{"cookies":{"domain":null},"id":"MarketStreet","alias":"Sites-MarketStreet-Site","name":"Sites-MarketStreet-Site","defaultLocale":"en-US","defaultCurrency":"USD","supportedLocales":[{"id":"en-US","preferredCurrency":"USD"},{"id":"en-GB","preferredCurrency":"USD"}],"supportedCurrencies":["USD","GBP"]}]'
