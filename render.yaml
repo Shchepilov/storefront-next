@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: storefront-next
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /
+    envVars:
+      # Render injects PORT; the Dockerfile passes it to `sfnext preview`.
+      - key: NODE_ENV
+        value: production
+      # B2C Commerce API credentials. These are the public zzrf-041 demo
+      # values from .env.default — replace them with your own instance.
+      - key: PUBLIC__app__commerce__api__clientId
+        sync: false
+      - key: PUBLIC__app__commerce__api__organizationId
+        sync: false
+      - key: PUBLIC__app__commerce__api__shortCode
+        sync: false
+      - key: PUBLIC__app__defaultSiteId
+        sync: false
+      - key: PUBLIC__app__commerce__sites
+        sync: false
